@@ -43,7 +43,7 @@ public class Day02 {
         int safeReports = 0;
 
         for (List<Integer> report : reports) {
-            if (validReport(report) == -1) {
+            if (validReport(report)) {
                 safeReports++;
             }
         }
@@ -55,43 +55,42 @@ public class Day02 {
         int safeReports = 0;
 
         for (List<Integer> report : reports) {
-            int invalidIndex = validReport(report);
 
             // validate complete report
-            if (invalidIndex == -1) {
+            if (validReport(report)) {
                 safeReports++;
                 continue;
             }
-
-            // validate report where the first number is removed
-            if (invalidIndex == 1 && validReport(report.subList(1, report.size())) == -1) {
-                safeReports++;
-                continue;
-            }
-
-            // validate report where the number at index >= 1 is removed
-            List<Integer> reportWithRemovedLevel = new ArrayList<>(report);
-            reportWithRemovedLevel.remove(invalidIndex);
-            if (validReport(reportWithRemovedLevel) == -1) {
-                safeReports++;
+            for (int i = 0; i < report.size(); i++) {
+                List<Integer> subReport = getSubReport(report, i);
+                if (validReport(subReport)) {
+                    safeReports++;
+                    break;
+                }
             }
         }
 
         return safeReports;
     }
 
-    private static int validReport(List<Integer> report) {
+    private static List<Integer> getSubReport(List<Integer> report, int indexToRemove) {
+        List<Integer> subReport = new ArrayList<>(report);
+        subReport.remove(indexToRemove);
+        return subReport;
+    }
+
+    private static boolean validReport(List<Integer> report) {
         boolean increasing = report.get(1) > report.get(0);
 
         for (int i = 0; i < report.size() - 1; i++) {
             int currentLevel = report.get(i);
             int nextLevel = report.get(i + 1);
             if (!validLevel(currentLevel, nextLevel, increasing)) {
-                return i;
+                return false;
             }
         }
 
-        return -1;
+        return true;
     }
 
     private static boolean validLevel(int currentLevel, int nextLevel, boolean increasing) {

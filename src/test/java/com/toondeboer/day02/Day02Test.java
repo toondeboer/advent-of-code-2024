@@ -41,4 +41,12 @@ public class Day02Test {
                 9 9 8 7 6""";
         assertEquals(7, Day02.solve(input)[1]);
     }
+
+    @Test
+    void testPart2edgeCases2() {
+        String input = """
+                1 3 4 5 2
+                1 9 8 7 6""";
+        assertEquals(2, Day02.solve(input)[1]);
+    }
 }
