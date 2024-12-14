@@ -36,4 +36,20 @@ public class Day04Test {
                 .X.X.XMASX""";
         assertEquals(18, Day04.solve(input)[0]);
     }
+
+    @Test
+    void testPart2() {
+        String input = """
+                .M.S......
+                ..A..MSMS.
+                .M.S.MAA..
+                ..A.ASMSM.
+                .M.S.M....
+                ..........
+                S.S.S.S.S.
+                .A.A.A.A..
+                M.M.M.M.M.
+                ..........""";
+        assertEquals(9, Day04.solve(input)[1]);
+    }
 }
