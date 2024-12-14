@@ -1,9 +1,6 @@
 package com.toondeboer;
 
-import com.toondeboer.solutions.Day01;
-import com.toondeboer.solutions.Day02;
-import com.toondeboer.solutions.Day03;
-import com.toondeboer.solutions.Day04;
+import com.toondeboer.solutions.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +9,6 @@ public class Main {
         Day02.run();
         Day03.run();
         Day04.run();
+        Day05.run();
     }
 }
