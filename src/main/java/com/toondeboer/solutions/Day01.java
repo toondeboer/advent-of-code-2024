@@ -1,4 +1,4 @@
-package com.toondeboer.day01;
+package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
 

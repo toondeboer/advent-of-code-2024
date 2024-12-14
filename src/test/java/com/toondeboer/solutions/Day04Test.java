@@ -1,4 +1,4 @@
-package com.toondeboer.day04;
+package com.toondeboer.solutions;
 
 import org.junit.jupiter.api.Test;
 
