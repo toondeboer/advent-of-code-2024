@@ -21,14 +21,14 @@ public class Day06 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         List<List<Character>> grid = getGrid(input);
 
         return calculatePath(grid);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         List<List<Character>> grid = getGrid(input);
 
         return calculateLoops(grid);

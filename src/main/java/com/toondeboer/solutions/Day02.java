@@ -11,13 +11,13 @@ public class Day02 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         List<List<Integer>> reports = getReports(input);
         return calculateSafeReportsPart1(reports);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         List<List<Integer>> reports = getReports(input);
         return calculateSafeReportsPart2(reports);
     }

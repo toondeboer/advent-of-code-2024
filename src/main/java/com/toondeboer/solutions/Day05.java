@@ -14,13 +14,13 @@ public class Day05 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         setRulesAndUpdates(input);
         return sumOfValidUpdates(rules, updates);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         setRulesAndUpdates(input);
         return sumOfInValidUpdates(rules, updates);
     }

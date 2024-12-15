@@ -14,13 +14,13 @@ public class Day03 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         List<String> multiplicationsPart1 = getMultiplicationStrings(input);
         return sumOfMultiplications(multiplicationsPart1);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         return sumOfMultiplicationsPart2(input);
     }
 

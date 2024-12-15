@@ -12,14 +12,14 @@ public class Day01 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         List<List<Integer>> lists = getArrays(input);
 
         return getDistance(lists);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         List<List<Integer>> lists = getArrays(input);
 
         return getSimilarityScore(lists);

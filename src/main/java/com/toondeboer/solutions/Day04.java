@@ -29,13 +29,13 @@ public class Day04 extends Solution {
     }
 
     @Override
-    public int solvePart1(String input) {
+    public long solvePart1(String input) {
         List<List<Character>> grid = getGrid(input);
         return countWords(grid);
     }
 
     @Override
-    public int solvePart2(String input) {
+    public long solvePart2(String input) {
         List<List<Character>> grid = getGrid(input);
         return countWordsPart2(grid);
     }
