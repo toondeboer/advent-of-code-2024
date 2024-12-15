@@ -35,6 +35,6 @@ public class Day07Test {
                 192: 17 8 14
                 21037: 9 7 18 13
                 292: 11 6 16 20""";
-        assertEquals(3749, solution.solvePart2(input));
+        assertEquals(11387, solution.solvePart2(input));
     }
 }

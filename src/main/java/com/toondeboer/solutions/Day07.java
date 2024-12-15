@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Day07 extends Solution {
     List<Equation> equations;
+    String[] operators;
 
     public Day07() {
         super("07");
@@ -15,12 +16,19 @@ public class Day07 extends Solution {
     @Override
     public long solvePart1(String input) {
         parseInput(input);
+
+        operators = new String[]{"+", "*"};
+
         return calculateTrueResults();
     }
 
     @Override
     public long solvePart2(String input) {
-        return 0;
+        parseInput(input);
+
+        operators = new String[]{"+", "*", "||"};
+
+        return calculateTrueResults();
     }
 
     private void parseInput(String input) {
@@ -54,7 +62,6 @@ public class Day07 extends Solution {
     }
 
     private boolean madeTrue(Equation equation) {
-        String[] operators = new String[]{"+", "*"};
 
         return calculateEquations(equation.testValue, equation.values, operators, 0);
     }
@@ -87,6 +94,10 @@ public class Day07 extends Solution {
             }
             case "*" -> {
                 return sum * nextValue;
+            }
+            case "||" -> {
+                String concatenatedString = sum + "" + nextValue;
+                return Long.parseLong(concatenatedString);
             }
         }
         return sum;
