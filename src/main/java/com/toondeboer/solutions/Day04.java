@@ -1,6 +1,5 @@
 package com.toondeboer.solutions;
 
-import com.toondeboer.utils.InputReader;
 import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;

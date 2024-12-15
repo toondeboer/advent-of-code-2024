@@ -1,6 +1,5 @@
 package com.toondeboer.solutions;
 
-import com.toondeboer.utils.InputReader;
 import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class Day01 extends Solution {
     public Day01() {
         super("01");
     }
-    
+
     @Override
     public int solvePart1(String input) {
         List<List<Integer>> lists = getArrays(input);
