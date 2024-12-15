@@ -3,8 +3,8 @@ package com.toondeboer.utils;
 import java.util.Objects;
 
 public class Coordinate {
-    private final int X;
-    private final int Y;
+    final int X;
+    final int Y;
 
     public Coordinate(int x, int y) {
         this.X = x;

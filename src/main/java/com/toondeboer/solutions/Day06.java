@@ -1,6 +1,7 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.Coordinate;
+import com.toondeboer.utils.CoordinateWithDirection;
 import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Day06 extends Solution {
     int currentY;
     String direction = "up";
     Set<Coordinate> visited = new HashSet<>();
+    Set<CoordinateWithDirection> visitedWithDirection = new HashSet<>();
 
     public Day06() {
         super("06");
@@ -28,7 +30,8 @@ public class Day06 extends Solution {
     @Override
     public int solvePart2(String input) {
         List<List<Character>> grid = getGrid(input);
-        return 0;
+
+        return calculateLoops(grid);
     }
 
     private static List<List<Character>> getGrid(String input) {
@@ -58,6 +61,55 @@ public class Day06 extends Solution {
         }
 
         return visited.size();
+    }
+
+    private int calculateLoops(List<List<Character>> grid) {
+        int loops = 0;
+        for (int x = 0; x < grid.size(); x++) {
+            for (int y = 0; y < grid.getFirst().size(); y++) {
+                setStartPosition(grid);
+                if (currentX == x && currentY == y) {
+                    continue;
+                }
+                List<List<Character>> newGrid = addObstacleToGrid(grid, x, y);
+                if (hasLoop(newGrid)) {
+                    loops++;
+                }
+            }
+        }
+        return loops;
+    }
+
+    private List<List<Character>> addObstacleToGrid(List<List<Character>> grid, int x, int y) {
+        List<List<Character>> newGrid = new ArrayList<>();
+
+        for (List<Character> row : grid) {
+            newGrid.add(new ArrayList<>(row));
+        }
+
+        List<Character> newRow = newGrid.get(x);
+        newRow.set(y, '#');
+        newGrid.set(x, newRow);
+
+        return newGrid;
+    }
+
+    private boolean hasLoop(List<List<Character>> grid) {
+        direction = "up";
+        visitedWithDirection = new HashSet<>();
+        boolean inGrid = true;
+
+        while (inGrid) {
+            CoordinateWithDirection coordinate = new CoordinateWithDirection(currentX, currentY, direction);
+            if (visitedWithDirection.contains(coordinate)) {
+                return true;
+            }
+            visitedWithDirection.add(coordinate);
+            takeStep(grid);
+            inGrid = inGrid(grid, currentX, currentY);
+        }
+
+        return false;
     }
 
     private void setStartPosition(List<List<Character>> grid) {
