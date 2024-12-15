@@ -20,7 +20,9 @@ public class Day01 extends Solution {
 
     @Override
     public int solvePart2(String input) {
-        return 0;
+        List<List<Integer>> lists = getArrays(input);
+
+        return getSimilarityScore(lists);
     }
 
     private static List<List<Integer>> getArrays(String input) {
@@ -54,5 +56,24 @@ public class Day01 extends Solution {
         }
 
         return distance;
+    }
+
+    private int getSimilarityScore(List<List<Integer>> lists) {
+        List<Integer> leftList = lists.get(0);
+        List<Integer> rightList = lists.get(1);
+
+        int score = 0;
+
+        for (int left : leftList) {
+            int count = 0;
+            for (int right : rightList) {
+                if (left == right) {
+                    count++;
+                }
+            }
+            score += left * count;
+        }
+
+        return score;
     }
 }
