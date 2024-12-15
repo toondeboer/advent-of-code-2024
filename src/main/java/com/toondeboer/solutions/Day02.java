@@ -1,26 +1,26 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
+import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day02 {
-    public static void run() {
-        String input = InputReader.readInput("day02.txt");
-
-        int[] safeReports = solve(input);
-
-        System.out.println("Day 2: part 1: " + safeReports[0] + ", part 2: " + safeReports[1]);
+public class Day02 extends Solution {
+    public Day02() {
+        super("02");
     }
 
-    public static int[] solve(String input) {
+    @Override
+    public int solvePart1(String input) {
         List<List<Integer>> reports = getReports(input);
+        return calculateSafeReportsPart1(reports);
+    }
 
-        int safeReportsPart1 = calculateSafeReportsPart1(reports);
-        int safeReportsPart2 = calculateSafeReportsPart2(reports);
-
-        return new int[]{safeReportsPart1, safeReportsPart2};
+    @Override
+    public int solvePart2(String input) {
+        List<List<Integer>> reports = getReports(input);
+        return calculateSafeReportsPart2(reports);
     }
 
     private static List<List<Integer>> getReports(String input) {

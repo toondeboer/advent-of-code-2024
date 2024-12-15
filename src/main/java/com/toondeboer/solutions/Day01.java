@@ -1,24 +1,27 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
+import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Day01 {
-    public static void run() {
-        String input = InputReader.readInput("day01.txt");
-
-        int distance = solve(input);
-
-        System.out.println("Day 1: " + distance);
+public class Day01 extends Solution {
+    public Day01() {
+        super("01");
     }
-
-    public static int solve(String input) {
+    
+    @Override
+    public int solvePart1(String input) {
         List<List<Integer>> lists = getArrays(input);
 
         return getDistance(lists);
+    }
+
+    @Override
+    public int solvePart2(String input) {
+        return 0;
     }
 
     private static List<List<Integer>> getArrays(String input) {

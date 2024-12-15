@@ -1,29 +1,28 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
+import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day03 {
+public class Day03 extends Solution {
 
-    public static void run() {
-        String input = InputReader.readInput("day03.txt");
-
-        int[] sum = solve(input);
-
-        System.out.println("Day 3: part 1: " + sum[0] + ", part 2: " + sum[1]);
+    public Day03() {
+        super("03");
     }
 
-    public static int[] solve(String input) {
+    @Override
+    public int solvePart1(String input) {
         List<String> multiplicationsPart1 = getMultiplicationStrings(input);
-        int sumPart1 = sumOfMultiplications(multiplicationsPart1);
+        return sumOfMultiplications(multiplicationsPart1);
+    }
 
-        int sumPart2 = sumOfMultiplicationsPart2(input);
-
-        return new int[]{sumPart1, sumPart2};
+    @Override
+    public int solvePart2(String input) {
+        return sumOfMultiplicationsPart2(input);
     }
 
     private static List<String> getMultiplicationStrings(String input) {

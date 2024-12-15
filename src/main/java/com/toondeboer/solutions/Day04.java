@@ -1,11 +1,12 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
+import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day04 {
+public class Day04 extends Solution {
     static int[][] DIRECTIONS = new int[][]{
             new int[]{1, 0},
             new int[]{1, -1},
@@ -24,21 +25,20 @@ public class Day04 {
             new int[]{1, 1}
     };
 
-    public static void run() {
-        String input = InputReader.readInput("day04.txt");
-
-        int[] sum = solve(input);
-
-        System.out.println("Day 4: part 1: " + sum[0] + ", part 2: " + sum[1]);
+    public Day04() {
+        super("04");
     }
 
-    public static int[] solve(String input) {
+    @Override
+    public int solvePart1(String input) {
         List<List<Character>> grid = getGrid(input);
+        return countWords(grid);
+    }
 
-        int wordCount1 = countWords(grid);
-        int wordCount2 = countWordsPart2(grid);
-
-        return new int[]{wordCount1, wordCount2};
+    @Override
+    public int solvePart2(String input) {
+        List<List<Character>> grid = getGrid(input);
+        return countWordsPart2(grid);
     }
 
     private static List<List<Character>> getGrid(String input) {

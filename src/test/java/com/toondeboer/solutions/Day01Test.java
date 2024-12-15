@@ -1,5 +1,6 @@
 package com.toondeboer.solutions;
 
+import com.toondeboer.utils.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,6 +15,7 @@ public class Day01Test {
                 1   3
                 3   9
                 3   3""";
-        assertEquals(11, Day01.solve(input));
+        Solution solution = new Day01();
+        assertEquals(11, solution.solvePart1(input));
     }
 }

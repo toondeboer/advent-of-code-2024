@@ -1,10 +1,13 @@
 package com.toondeboer.solutions;
 
+import com.toondeboer.utils.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day04Test {
+    Solution solution = new Day04();
+
     @Test
     void testPart1() {
         String input = """
@@ -18,7 +21,7 @@ public class Day04Test {
                 SAXAMASAAA
                 MAMMMXMMMM
                 MXMXAXMASX""";
-        assertEquals(18, Day04.solve(input)[0]);
+        assertEquals(18, solution.solvePart1(input));
     }
 
     @Test
@@ -34,7 +37,7 @@ public class Day04Test {
                 .A.A.A.A.A
                 ..M.M.M.MM
                 .X.X.XMASX""";
-        assertEquals(18, Day04.solve(input)[0]);
+        assertEquals(18, solution.solvePart1(input));
     }
 
     @Test
@@ -50,6 +53,6 @@ public class Day04Test {
                 .A.A.A.A..
                 M.M.M.M.M.
                 ..........""";
-        assertEquals(9, Day04.solve(input)[1]);
+        assertEquals(9, solution.solvePart2(input));
     }
 }

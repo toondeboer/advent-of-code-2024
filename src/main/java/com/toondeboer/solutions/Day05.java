@@ -1,20 +1,32 @@
 package com.toondeboer.solutions;
 
 import com.toondeboer.utils.InputReader;
+import com.toondeboer.utils.Solution;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day05 {
-    public static void run() {
-        String input = InputReader.readInput("day05.txt");
+public class Day05 extends Solution {
+    List<List<Integer>> rules;
+    List<List<Integer>> updates;
 
-        int[] sum = solve(input);
-
-        System.out.println("Day 5: part 1: " + sum[0] + ", part 2: " + sum[1]);
+    public Day05() {
+        super("05");
     }
 
-    public static int[] solve(String input) {
+    @Override
+    public int solvePart1(String input) {
+        setRulesAndUpdates(input);
+        return sumOfValidUpdates(rules, updates);
+    }
+
+    @Override
+    public int solvePart2(String input) {
+        setRulesAndUpdates(input);
+        return sumOfInValidUpdates(rules, updates);
+    }
+
+    public void setRulesAndUpdates(String input) {
         List<List<Integer>> rules = new ArrayList<>();
         List<List<Integer>> updates = new ArrayList<>();
 
@@ -32,10 +44,8 @@ public class Day05 {
             }
         }
 
-        int part1 = sumOfValidUpdates(rules, updates);
-        int part2 = sumOfInValidUpdates(rules, updates);
-
-        return new int[]{part1, part2};
+        this.rules = rules;
+        this.updates = updates;
     }
 
     private static int sumOfValidUpdates(List<List<Integer>> rules, List<List<Integer>> updates) {
