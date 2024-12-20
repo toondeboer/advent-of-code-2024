@@ -13,5 +13,7 @@ public class Main {
 //        new Day06().run();
         new Day07().run();
         new Day08().run();
+        new Day09().run();
+        new Day10().run();
     }
 }

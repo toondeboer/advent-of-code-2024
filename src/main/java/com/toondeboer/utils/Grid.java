@@ -26,8 +26,16 @@ public class Grid {
         return grid.get(y - 1).get(x - 1);
     }
 
+    public int getCoordinateInt(int x, int y) {
+        return Character.getNumericValue(getCoordinate(x, y));
+    }
+
     public char getCoordinate(Coordinate coordinate) {
         return getCoordinate(coordinate.X, coordinate.Y);
+    }
+
+    public int getCoordinateInt(Coordinate coordinate) {
+        return Character.getNumericValue(getCoordinate(coordinate));
     }
 
     public int getHeight() {
