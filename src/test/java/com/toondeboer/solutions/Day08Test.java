@@ -48,6 +48,6 @@ public class Day08Test {
                 .........A..
                 ............
                 ............""";
-        assertEquals(0, solution.solvePart2(input));
+        assertEquals(34, solution.solvePart2(input));
     }
 }

@@ -10,6 +10,7 @@ public class Day08 extends Solution {
     Grid grid;
     Map<Character, List<Coordinate>> antennas;
     Set<Coordinate> antinodes;
+    int version;
 
     public Day08() {
         super("08");
@@ -17,6 +18,7 @@ public class Day08 extends Solution {
 
     @Override
     public long solvePart1(String input) {
+        version = 1;
         antennas = new HashMap<>();
         antinodes = new HashSet<>();
 
@@ -27,7 +29,13 @@ public class Day08 extends Solution {
 
     @Override
     public long solvePart2(String input) {
-        return 0;
+        version = 2;
+        antennas = new HashMap<>();
+        antinodes = new HashSet<>();
+
+        grid = new Grid(input);
+        locateAntennas();
+        return antinodes.size();
     }
 
     private void locateAntennas() {
@@ -49,7 +57,12 @@ public class Day08 extends Solution {
             return;
         }
         for (Coordinate antenna : similarAntennas) {
-            List<Coordinate> antinodes = calculateAntinodesLocations(antenna, coordinate);
+            List<Coordinate> antinodes;
+            if (version == 1) {
+                antinodes = calculateAntinodesLocations(antenna, coordinate);
+            } else {
+                antinodes = calculateAntinodesLocations2(antenna, coordinate);
+            }
             this.antinodes.addAll(antinodes);
         }
     }
@@ -72,6 +85,45 @@ public class Day08 extends Solution {
         }
         if (grid.fits(antinode2)) {
             antinodes.add(antinode2);
+        }
+
+        return antinodes;
+    }
+
+    private List<Coordinate> calculateAntinodesLocations2(Coordinate antenna1, Coordinate antenna2) {
+        List<Coordinate> antinodes = new ArrayList<>();
+        antinodes.add(antenna1);
+        antinodes.add(antenna2);
+
+        int dx = antenna1.X - antenna2.X;
+        int dy = antenna1.Y - antenna2.Y;
+
+        int x = antenna1.X;
+        int y = antenna1.Y;
+
+        while (true) {
+            x += dx;
+            y += dy;
+            Coordinate antenna = new Coordinate(x, y);
+            if (grid.fits(antenna)) {
+                antinodes.add(antenna);
+            } else {
+                break;
+            }
+        }
+
+        x = antenna2.X;
+        y = antenna2.Y;
+
+        while (true) {
+            x -= dx;
+            y -= dy;
+            Coordinate antenna = new Coordinate(x, y);
+            if (grid.fits(antenna)) {
+                antinodes.add(antenna);
+            } else {
+                break;
+            }
         }
 
         return antinodes;
